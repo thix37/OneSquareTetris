@@ -100,7 +100,18 @@ namespace One_Sq_Tetris
             }
             if (keyData == Keys.Right)
             {
-
+                if (tetrisPiecePosition < 39 && bloksFilled[tetrisPiecePosition] == false)
+                {
+                    if (tetrisPiecePosition != 0 && tetrisPiecePosition != 4 && tetrisPiecePosition != 9 &&
+                        tetrisPiecePosition != 14 && tetrisPiecePosition != 19 && tetrisPiecePosition != 24 &&
+                        tetrisPiecePosition != 29 && tetrisPiecePosition != 34 && BlockLabels[tetrisPiecePosition + 1].BackColor != blokEmptyColor[1])
+                    {
+                        tetrisPiecePosition++;
+                        BlockLabels[tetrisPiecePosition].BackColor = blokEmptyColor[1];
+                        BlockLabels[tetrisPiecePosition - 1].BackColor = blokEmptyColor[0];
+                        return true;
+                    }
+                }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
