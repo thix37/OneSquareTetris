@@ -25,7 +25,7 @@ namespace One_Sq_Tetris
             InitializeComponent();
 
             _timer = new Timer();
-            _timer.Interval = 200;
+            _timer.Interval = 100;
             _timer.Enabled = true;
             _timer.Tick += new System.EventHandler(TimerTickEvent);
 

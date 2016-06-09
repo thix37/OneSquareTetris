@@ -106,7 +106,7 @@ namespace One_Sq_Tetris
                     blokPossitionX = 0;
                 }
             }
-
+            
                 blokNumber = 0;
 
                 foreach (System.Windows.Forms.Label blok in blockLabels)
