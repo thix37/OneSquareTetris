@@ -31,6 +31,7 @@ namespace One_Sq_Tetris
         private void InitializeComponent()
         {
             this.blockPanel = new System.Windows.Forms.Panel();
+            this.blockLabels = new System.Windows.Forms.Label[40];
             this.SuspendLayout();
             // 
             // blockPanel
@@ -42,7 +43,7 @@ namespace One_Sq_Tetris
             this.blockPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 
 
-            //tworzymy etykiety
+            //Create the labels
             int blokNumber = 0;
             int blokPossitionX = 0;
             int blokRow = 0;
@@ -104,6 +105,7 @@ namespace One_Sq_Tetris
                     blokRow++;
                     blokPossitionX = 0;
                 }
+            }
 
                 blokNumber = 0;
 
@@ -113,7 +115,7 @@ namespace One_Sq_Tetris
                     blokNumber++;
                 }
 
-            }
+            
 
             // 
             // Form1
