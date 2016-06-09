@@ -216,5 +216,22 @@ namespace One_Sq_Tetris
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void oAutorzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            	MessageBox.Show("Martyna Florian","Informacja o Autorze",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+        }
+
+        private void zabijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void jakGracToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Jesli spadajace klocki zapelnia linie, to ona znika, a powyzsze klocki spadaja linie nizej. Przegrana jest wtedy, gdy klocki ulozone jeden na drugim dotkna gornej czesci planszy. Powodzenia! ", "Zasady gry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
     }
 }
