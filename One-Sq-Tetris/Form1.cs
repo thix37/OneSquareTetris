@@ -16,5 +16,10 @@ namespace One_Sq_Tetris
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
