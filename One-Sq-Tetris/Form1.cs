@@ -53,6 +53,29 @@ namespace One_Sq_Tetris
         {
             tetrisPiecePosition += 5;
 
+            if (tetrisPiecePosition < 35)
+            {
+                if (BlockLabels[tetrisPiecePosition].BackColor == blokEmptyColor[1])
+                {
+                    tetrisPiecePosition = 2;
+
+                }
+            }
+
+            if (tetrisPiecePosition == 2)
+            {
+                int ile = 0;
+                foreach (Label blok in BlockLabels)
+                {
+                    if (blok.BackColor == blokEmptyColor[1])
+                    {
+                        bloksFilled[ile] = true;
+                    }
+                    ile++;
+                }
+
+            }
+
             if (tetrisPiecePosition > 40)
             {
                 tetrisPiecePosition = 2;
@@ -105,8 +128,53 @@ namespace One_Sq_Tetris
                 {
                     blok.BackColor = blokEmptyColor[0];
                 }
+
+                //opadanie po wyczyszczeniu
+                int ileKlockow = 0;
+                foreach (bool blokFilled in bloksFilled)
+                {
+                    if (blokFilled == true)
+                    {
+                        BlockLabels[ileKlockow].BackColor = blokEmptyColor[1];
+                    }
+                    ileKlockow++;
+                }
+
+                if (tetrisPiecePosition < 40)
+                {
+                    if (BlockLabels[tetrisPiecePosition].BackColor == blokEmptyColor[0])
+                    {
+                        BlockLabels[tetrisPiecePosition].BackColor = blokEmptyColor[1];
+
+                        if (tetrisPiecePosition > 5)
+                        {
+                            BlockLabels[tetrisPiecePosition - 5].BackColor = blokEmptyColor[0];
+
+                        }
+                    }
+                }
             }
 
+            //kiedy klocki sa az do samej gory
+            if (BlockLabels[2].BackColor == blokEmptyColor[1] && BlockLabels[2 + 5].BackColor == blokEmptyColor[1])
+            {
+                _timer.Stop();
+                DialogResult quitOrContinue = MessageBox.Show("Przegrales. Czy chcesz grac od nowa?", "Przegrana!", MessageBoxButtons.YesNo);
+                if (quitOrContinue == DialogResult.Yes)
+                {
+                    foreach (Label blok in BlockLabels)
+                    {
+                        blok.BackColor = blokEmptyColor[0];
+                    }
+                    bloksFilled = new bool[40];
+                    tetrisPiecePosition = -3;
+                    _timer.Start();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
         }
         
         private void panel1_Paint(object sender, PaintEventArgs e)
