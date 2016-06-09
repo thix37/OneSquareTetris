@@ -27,11 +27,11 @@ namespace One_Sq_Tetris
             _timer = new Timer();
             _timer.Interval = 200;
             _timer.Enabled = true;
-            _timer.Tick+=new System.EventHandler(TimerTickEvent);
+            _timer.Tick += new System.EventHandler(TimerTickEvent);
 
             blokEmptyColor = new Color[2];
 
-           bloksFilled = new bool[40];
+            bloksFilled = new bool[40];
 
     
             tetrisPiecePosition = -3;
@@ -71,6 +71,39 @@ namespace One_Sq_Tetris
                         BlockLabels[tetrisPiecePosition - 5].BackColor = blokEmptyColor[0];
 
                     }
+                }
+            }
+
+            if(BlockLabels[35].BackColor == blokEmptyColor[1] && 
+               BlockLabels[36].BackColor == blokEmptyColor[1] &&
+               BlockLabels[37].BackColor == blokEmptyColor[1] && 
+               BlockLabels[38].BackColor == blokEmptyColor[1] &&
+               BlockLabels[39].BackColor == blokEmptyColor[1] )
+            {
+                //czyscimy linie, bo sa wszystkie kwadraty zapelnione
+                BlockLabels[35].BackColor = blokEmptyColor[0];
+                BlockLabels[36].BackColor = blokEmptyColor[0] ;
+                BlockLabels[37].BackColor = blokEmptyColor[0] ;
+                BlockLabels[38].BackColor = blokEmptyColor[0] ;
+                BlockLabels[39].BackColor = blokEmptyColor[0] ;
+
+                int ileBloks = 0;
+
+                bloksFilled = new bool[40];
+
+                foreach (Label blok in BlockLabels)
+                {
+                    if (blok.BackColor == blokEmptyColor[1])
+                    {
+                        bloksFilled[ileBloks + 5] = true;
+                    }
+
+                    ileBloks++;
+                }
+
+                foreach (Label blok in BlockLabels)
+                {
+                    blok.BackColor = blokEmptyColor[0];
                 }
             }
 
