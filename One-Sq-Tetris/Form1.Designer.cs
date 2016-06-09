@@ -1,4 +1,5 @@
-﻿namespace One_Sq_Tetris
+﻿using System.Drawing;
+namespace One_Sq_Tetris
 {
     partial class Form1
     {
@@ -29,6 +30,7 @@
         private void InitializeComponent()
         {
             this.blockPanel = new System.Windows.Forms.Panel();
+            this.blockLabels = new System.Windows.Forms.Label[40];
             this.SuspendLayout();
             // 
             // blockPanel
@@ -38,6 +40,80 @@
             this.blockPanel.Size = new System.Drawing.Size(350, 500);
             this.blockPanel.TabIndex = 0;
             this.blockPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
+            //Tworzymy etykiety
+            int blokNumber = 0;
+            int blokPossitionX = 0;
+            int blokRow = 0;
+
+            foreach (System.Windows.Forms.Label blok in blockLabels)
+            {
+                blockLabels[blokNumber] = new System.Windows.Forms.Label();
+                this.blockLabels[blokNumber].BackColor = Color.Indigo;
+                this.blockLabels[blokNumber].Location = new System.Drawing.Point(60 * blokPossitionX,60 * blokRow);
+                this.blockLabels[blokNumber].Name = "blokLabel" + blokNumber.ToString();
+                this.blockLabels[blokNumber].Size = new System.Drawing.Size(50,50);
+                this.blockLabels[blokNumber].TabIndex = blokNumber;
+                blokNumber++;
+                blokPossitionX++;
+
+
+                if (blokNumber == 5)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+                if (blokNumber == 10)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+                if (blokNumber == 15)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+                if (blokNumber == 20)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+                if (blokNumber == 25)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+                if (blokNumber == 30)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+                if (blokNumber == 35)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+                if (blokNumber == 40)
+                {
+                    blokRow++;
+                    blokPossitionX = 0;
+                }
+
+            }
+
+
+            blokNumber = 0;
+            foreach (System.Windows.Forms.Label blok in blockLabels)
+            {
+                this.blockPanel.Controls.Add(this.blockLabels[blokNumber]);
+                blokNumber++;
+            }
+
             // 
             // Form1
             // 
